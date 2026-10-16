@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav" xmlns:ICAL="http://apple.com/ns/ical/">
+  <response>
+    <href>/123456/calendars/</href>
+    <propstat>
+      <prop>
+        <displayname>Calendars</displayname>
+        <resourcetype><collection/></resourcetype>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+    <propstat>
+      <prop><ICAL:calendar-color/><C:supported-calendar-component-set/></prop>
+      <status>HTTP/1.1 404 Not Found</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/work-cal-uuid/</href>
+    <propstat>
+      <prop>
+        <displayname>Work</displayname>
+        <resourcetype><collection/><C:calendar/></resourcetype>
+        <ICAL:calendar-color symbolic-color="blue">#1BADF8FF</ICAL:calendar-color>
+        <C:supported-calendar-component-set><C:comp name="VEVENT"/></C:supported-calendar-component-set>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/tasks/</href>
+    <propstat>
+      <prop>
+        <displayname>Reminders</displayname>
+        <resourcetype><collection/><C:calendar/></resourcetype>
+        <C:supported-calendar-component-set><C:comp name="VTODO"/></C:supported-calendar-component-set>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/home-cal-uuid/</href>
+    <propstat>
+      <prop>
+        <displayname>Home</displayname>
+        <resourcetype><collection/><C:calendar/></resourcetype>
+        <ICAL:calendar-color>#FF2968FF</ICAL:calendar-color>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+</multistatus>

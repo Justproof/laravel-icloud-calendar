@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <response>
+    <href>/123456/calendars/work-cal-uuid/timed.ics</href>
+    <propstat>
+      <prop>
+        <getetag>"timed-1"</getetag>
+        <C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Apple Inc.//iOS 19.0//EN
+BEGIN:VEVENT
+UID:timed-event@icloud.com
+DTSTAMP:20261020T120000Z
+DTSTART;TZID=America/Chicago:20261103T100000
+DTEND;TZID=America/Chicago:20261103T110000
+SUMMARY:Dentist
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/work-cal-uuid/weekly.ics</href>
+    <propstat>
+      <prop>
+        <getetag>"weekly-1"</getetag>
+        <C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Apple Inc.//iOS 19.0//EN
+BEGIN:VEVENT
+UID:weekly-standup@icloud.com
+DTSTAMP:20261020T120000Z
+DTSTART;TZID=America/Chicago:20261005T090000
+DTEND;TZID=America/Chicago:20261005T093000
+RRULE:FREQ=WEEKLY;BYDAY=MO
+EXDATE;TZID=America/Chicago:20261109T090000
+SUMMARY:Standup
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/work-cal-uuid/allday.ics</href>
+    <propstat>
+      <prop>
+        <getetag>"allday-1"</getetag>
+        <C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Apple Inc.//iOS 19.0//EN
+BEGIN:VEVENT
+UID:allday-offsite@icloud.com
+DTSTAMP:20261020T120000Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:Offsite
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/work-cal-uuid/transparent.ics</href>
+    <propstat>
+      <prop>
+        <getetag>"transparent-1"</getetag>
+        <C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Apple Inc.//iOS 19.0//EN
+BEGIN:VEVENT
+UID:transparent-note@icloud.com
+DTSTAMP:20261020T120000Z
+DTSTART:20261104T150000Z
+DTEND:20261104T160000Z
+TRANSP:TRANSPARENT
+SUMMARY:Reminder to breathe
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/work-cal-uuid/cancelled.ics</href>
+    <propstat>
+      <prop>
+        <getetag>"cancelled-1"</getetag>
+        <C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Apple Inc.//iOS 19.0//EN
+BEGIN:VEVENT
+UID:cancelled-lunch@icloud.com
+DTSTAMP:20261020T120000Z
+DTSTART:20261104T180000Z
+DTEND:20261104T190000Z
+STATUS:CANCELLED
+SUMMARY:Lunch (cancelled)
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+  <response>
+    <href>/123456/calendars/work-cal-uuid/declined.ics</href>
+    <propstat>
+      <prop>
+        <getetag>"declined-1"</getetag>
+        <C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Apple Inc.//iOS 19.0//EN
+BEGIN:VEVENT
+UID:declined-invite@example.com
+DTSTAMP:20261020T120000Z
+DTSTART:20261104T200000Z
+DTEND:20261104T210000Z
+ORGANIZER;CN=Someone Else:mailto:someone@example.com
+ATTENDEE;CN=Owner;PARTSTAT=DECLINED:mailto:owner@icloud.com
+SUMMARY:Vendor pitch
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data>
+      </prop>
+      <status>HTTP/1.1 200 OK</status>
+    </propstat>
+  </response>
+</multistatus>
