@@ -4,6 +4,27 @@ Read busy time from, and write events to, iCloud calendars over CalDAV from a La
 
 Pulled out of the booking flow on [pcdrama.com](https://pcdrama.com), where it replaced a Calendly embed. Everything in here was learned by making a real booking, watching two invites arrive, and working out why.
 
+## Why it exists
+
+A scheduler is only as good as its view of your week. Calendly reads your calendar for you, charges per seat, and puts its own logo between you and the person booking. We wanted the booking page on our own domain, the leads in our own database, and the calendar we already live in (iCloud) as the single source of truth for when we are free.
+
+Apple publishes no calendar API for that, but every iCloud calendar is a CalDAV collection. This package is the part of our scheduler that talks to it: what is busy, put this booking on the calendar, take it off again. Everything above that line (meeting types, hours, limits, the picker, the emails) stays in your app, because that is where your rules live.
+
+The owner line: your booking page checks the same calendar your phone does, so a dentist appointment added on the train closes that slot within five minutes.
+
+## The scheduler it powers
+
+For a sense of what you can build on top, this is the in-house scheduler running on pcdrama.com. None of it ships in this package; the package supplies the calendar half of each item.
+
+- **Meeting types** with their own duration, buffers, minimum notice, booking window, slot interval, and how to meet (phone, video link, or the guest's choice of either).
+- **Weekly hours plus dated overrides** for the owner, and per-type hours that can only narrow them (sales calls mornings only, support any open hour).
+- **Daily and weekly limits**, globally and per type, counted in the owner's timezone with Monday weeks.
+- **A slot picker** that removes anything iCloud marks busy, then rechecks a fresh busy list under a lock at confirm time so two people tapping 2:30 cannot both get it.
+- **A routing question** on `/book` that sends each visitor to the right meeting type, and **intake questions** per type whose answers are snapshotted on the booking.
+- **Guest self-service** through a signed manage link: reschedule or cancel, and the calendar event moves or disappears with it.
+- **Email automation** from a per-booking ledger: confirmation with the invite, reminders on editable offsets (24 hours and 1 hour by default), an optional follow-up after the call, and retry, pause and "mark held" controls for the owner.
+- **A needs-attention view** for bookings that could not be written to iCloud yet, with a queued job retrying until they sync.
+
 ## What you get
 
 - **Discovery.** Hand it the Apple ID and the app-specific password; it walks `current-user-principal` to `calendar-home-set` to the calendars, and tells you which ones hold events (Reminders lists are skipped).
@@ -15,8 +36,11 @@ Pulled out of the booking flow on [pcdrama.com](https://pcdrama.com), where it r
 
 ## Install
 
+The package is not on Packagist yet, so point Composer at the repository first:
+
 ```bash
-composer require justproof/laravel-icloud-calendar
+composer config repositories.icloud-calendar vcs https://github.com/Justproof/laravel-icloud-calendar
+composer require justproof/laravel-icloud-calendar:dev-main
 php artisan vendor:publish --tag=icloud-calendar-config
 ```
 
