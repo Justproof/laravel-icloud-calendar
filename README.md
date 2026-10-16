@@ -182,7 +182,7 @@ composer test
 
 ## Requirements
 
-PHP 8.2+, Laravel 11 or 12, `sabre/vobject` ^4.5 (pulled in for parsing and recurrence expansion; CalDAV transport is plain `Http`).
+PHP 8.3+, Laravel 12 or 13, `sabre/vobject` ^4.5 (pulled in for parsing and recurrence expansion; CalDAV transport is plain `Http`).
 
 ## License
 
